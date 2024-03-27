@@ -1,6 +1,17 @@
 import pandas as pd
 import re
 import os
+from tkinter import Tk, filedialog
+
+
+def get_file_path():
+    """
+    Opens a file selection dialog and returns the selected file path.
+    """
+    root = Tk()
+    root.withdraw()  # Hide the main window
+    file_path = filedialog.askopenfilename()
+    return file_path
 
 
 def read_file(file_path):
@@ -18,10 +29,15 @@ def read_file(file_path):
 
 
 # Path to your file - adjust this as necessary
-file_path = input("Enter the path to your file: ")
+# file_path = input("Enter the path to your file: ")
+file_path = get_file_path()
+# Check if a file was selected
+if not file_path:
+    print("No file selected. Exiting...")
+    exit()
 
 # Regular expression to match phone numbers of different formats
-phone_number_regex = re.compile(r"\(\d{3}\) \d{3}-\d{4}")
+phone_number_regex = re.compile(r"(?:\d{3}|\(\d{3}\)) \d{3}-\d{4}")
 
 # Dictionary to hold phone numbers (core digits) and their associated ticket IDs
 phone_tickets_dict = {}
