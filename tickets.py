@@ -71,10 +71,10 @@ try:
                 )
 
     print("Done writing ticket IDs by phone number to tickets.txt")
-    input("Press any key to close...")
+    os.system("pause")
 except FileNotFoundError:
     print("Error: File not found.")
-    input("Press any key to close...")
+    os.system("pause")
 except ValueError as e:
     print(e)
-    input("Press any key to close...")
+    os.system("pause")
