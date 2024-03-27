@@ -62,7 +62,7 @@ try:
             else:
                 # Otherwise, create a new entry in the dictionary
                 phone_tickets_dict[phone_number] = [ticket_id]
-                
+
     with open("tickets.txt", "w") as file:
         for phone_number, ticket_ids in phone_tickets_dict.items():
             if len(ticket_ids) > 1:
@@ -71,7 +71,10 @@ try:
                 )
 
     print("Done writing ticket IDs by phone number to tickets.txt")
+    input("Press any key to close...")
 except FileNotFoundError:
     print("Error: File not found.")
+    input("Press any key to close...")
 except ValueError as e:
     print(e)
+    input("Press any key to close...")
